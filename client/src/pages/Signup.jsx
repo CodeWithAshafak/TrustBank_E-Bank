@@ -25,7 +25,7 @@ const Signup = () => {
     const api =`${BASE_URL}/user/useregistration`
     try {
       const response = await axios.post(api,input)
-      toast.success(response?.data?.msg)
+      toast.success(response.data.msg)
       setInterval(()=>{ navigate('/login')},6000)
      
     } catch (error) {

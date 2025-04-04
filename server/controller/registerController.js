@@ -48,6 +48,48 @@ const register = async (req,res)=>{
   }
 }
 
+
+const login = async (req,res)=>{
+   
+
+    const { email, account, password} = req.body
+    
+
+
+    try {
+    const data = await UserModel.findOne({email:email})
+
+    if(!data){
+      return res.status(400).send({msg:"Invalid Email"})
+    }
+    if(data.password!=password){
+      return res.status(400).send({msg:"password not matched"})
+    }
+    if(data.Account!=account){
+      return res.status(400).send({msg:"password not matched"})
+    }
+    
+    res.status(200).json({msg:"Login Successfull"})
+    
+   } catch (error) {
+
+
+    res.status(400).send({msg:"login Failed"})
+
+
+
+    
+   }
+
+   
+  
+   
+  
+
+
+}
+
 module.exports= {
-  register
+  register,
+  login
 }
